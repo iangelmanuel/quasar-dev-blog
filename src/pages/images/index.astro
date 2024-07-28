@@ -1,0 +1,123 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro"
+import { Image, Picture } from "astro:assets"
+import post05 from "@/assets/images/post-05.png"
+---
+
+<MainLayout
+  title="Images"
+  description="Images are a great way to add visual interest to your site."
+>
+  <h1 class="text-5xl mb-3 font-extrabold">Componente de Imagenes</h1>
+
+  <h2>Imagen tradicional:</h2>
+  <img
+    src="/assets/images/post-05.png"
+    alt="Imagen css"
+    width="250"
+    height="250"
+  />
+
+  <h2>
+    Imagen importada dentro de la carpeta <code
+      >./src/assets/images/post-05.png</code
+    >
+  </h2>
+  <Image
+    src={post05}
+    alt="Imagen css"
+    width="250"
+    height="250"
+  />
+
+  <h2>Imagen ajustada con CSS</h2>
+  <Image
+    src={post05}
+    alt="Imagen css"
+    width="250"
+    height="250"
+    style={{
+      height: "250px",
+      width: "250px"
+    }}
+  />
+
+  <h2>Imagen ajustada por atributo <code>quality low</code></h2>
+  <Image
+    src={post05}
+    alt="Imagen css"
+    width="250"
+    height="250"
+    quality="low"
+  />
+
+  <h2>Imagen ajustada por atributo <code>quality high</code></h2>
+  <Image
+    src={post05}
+    alt="Imagen css"
+    width="250"
+    height="250"
+    quality="high"
+  />
+
+  <h2>Formatos de Imagenes</h2>
+  <Image
+    src={post05}
+    alt="Imagen css"
+    width="250"
+    height="250"
+    format="avif"
+  />
+
+  <h2>Picture con el atributo de <code>formats</code></h2>
+  <Picture
+    src={post05}
+    alt="Imagen css"
+    width="250"
+    height="250"
+    formats={["webp", "avif"]}
+  />
+
+  <h2>Picture con los atributos de <code>withs</code> <code>sizes</code></h2>
+  <Picture
+    src={post05}
+    alt="Imagen css"
+    width="250"
+    height="250"
+    widths={[240, 540, 720, post05.width]}
+    sizes={`(max-width: 360px) 240px, (max-width: 720px) 540px, (max-width: 1600px) 720px, ${post05.width}px`}
+  />
+
+  <h2>Picture con el atributo de <code>densities</code></h2>
+  <Picture
+    src={post05}
+    alt="Imagen css"
+    width="250"
+    height="250"
+    densities={[1.5, 2]}
+  />
+
+  <div
+    style={{
+      height: "3000px"
+    }}
+  >
+  </div>
+
+  <img
+    src="/assets/images/post-05.png"
+    alt="Imagen css"
+    width="250"
+    height="250"
+  />
+</MainLayout>
+
+<style>
+  h2 {
+    @apply text-white mt-10;
+  }
+
+  code {
+    @apply text-white bg-blue-900 py-0.5 px-2 rounded-xl;
+  }
+</style>
