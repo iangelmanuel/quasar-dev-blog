@@ -1,0 +1,23 @@
+---
+import AuthorProfile from "@/components/AuthorProfile.astro"
+import { siteConfig } from "@/config/site-config"
+import MainLayout from "@/layouts/MainLayout.astro"
+import { getCollection } from "astro:content"
+
+const authors = await getCollection("author")
+---
+
+<MainLayout
+  title="Listado de autores"
+  description="Conoce los autores de Quasar Web Design"
+>
+  <section class="container px-6 py-10 mx-auto">
+    <h1 class="text-3xl font-bold text-slate-400 lg:text-4xl">
+      {siteConfig.title}
+    </h1>
+  </section>
+
+  <section class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+    {authors.map((author) => <AuthorProfile author={author} />)}
+  </section>
+</MainLayout>
