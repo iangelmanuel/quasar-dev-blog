@@ -1,0 +1,31 @@
+---
+import { Formatter } from "@/utils/formatter"
+import { Image } from "astro:assets"
+
+const { frontmatter, url } = Astro.props
+---
+
+<div class="lg:flex">
+  <Image
+    class="object-cover w-full h-56 rounded-lg lg:w-64"
+    src={frontmatter.image}
+    alt={frontmatter.title}
+    width="500"
+    height="500"
+    quality="low"
+    loading="lazy"
+  />
+
+  <div class="flex flex-col justify-between py-6 lg:mx-6">
+    <a
+      href={url}
+      class="text-xl font-semibold text-gray-800 hover:underline dark:text-white"
+    >
+      {frontmatter.title}
+    </a>
+
+    <span class="text-sm text-gray-500 dark:text-gray-300">
+      {Formatter.formatDate(frontmatter.date)}
+    </span>
+  </div>
+</div>
