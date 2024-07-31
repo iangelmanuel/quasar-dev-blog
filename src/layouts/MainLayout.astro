@@ -52,8 +52,14 @@ const { title, description, image = imageUrl } = Astro.props
       property="og:type"
       content="website"
     />
-    <title>{title}</title>
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Quasar's Blog"
+      href={new URL("rss.xml", Astro.site)}
+    />
     <ViewTransitions />
+    <title>{title}</title>
   </head>
 
   <body class="bg-slate-950 text-slate-200">
